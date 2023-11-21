@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine
+FROM ruby:3.2-alpine
 
 # Install system dependencies
 RUN apk --update add \
@@ -9,7 +9,7 @@ RUN apk --update add \
       su-exec \
       tini && \
     gem update --system && \
-    gem install bundler:2.3.13 && \
+    gem install bundler && \
     rm -rf /var/cache/apk/*
 
 # Create gemstash user

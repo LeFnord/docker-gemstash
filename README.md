@@ -27,20 +27,6 @@ $ docker-compose ps
 docker-gemstash_gemstash_1   /entrypoint.sh bundle exec ...   Up      0.0.0.0:9292->9292/tcp
 ```
 
-#### MySQL
-
-See `docker-compose.mysql.yml` for an example of how to use MySQL. To run:
-
-```console
-$ export COMPOSE_FILE="docker-compose.mysql.yml"
-$ docker-compose up -d
-$ docker-compose ps
-           Name                         Command                  State               Ports
----------------------------------------------------------------------------------------------------
-docker-gemstash_gemstash_1   /entrypoint.sh bundle exec ...   Up             0.0.0.0:9292->9292/tcp
-docker-gemstash_mysql_1      docker-entrypoint.sh mysqld      Up (healthy)   3306/tcp
-```
-
 #### PostgreSQL
 
 See `docker-compose.postgres.yml` for an example of how to use PostgreSQL. To run:
