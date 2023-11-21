@@ -1,16 +1,16 @@
-FROM ruby:3.2-alpine
+FROM ruby:3-alpine
 
 # Install system dependencies
-RUN apk --update add \
-      build-base \
-      mariadb-dev \
-      postgresql-dev \
-      sqlite-dev \
-      su-exec \
-      tini && \
-    gem update --system && \
-    gem install bundler && \
-    rm -rf /var/cache/apk/*
+RUN apk add --update --no-cache \
+    build-base \
+    libpq-dev \
+    libaio-dev \
+    sqlite-dev \
+    su-exec \
+    tini \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN gem update --system && gem install bundler
 
 # Create gemstash user
 ENV GEMSTASH_USER="gemstash"

@@ -7,15 +7,7 @@
 :fetch_timeout: 20
 :log_file: :stdout
 
-<% if ENV['GEMSTASH_DB_ADAPTER'] == 'mysql2' %>
-# mysql2 adapter
-:db_adapter: mysql2
-:db_url: <%= "mysql2://#{ENV['GEMSTASH_DB_HOST']}:#{ENV['GEMSTASH_DB_PORT']}/#{ENV['GEMSTASH_DB_DATABASE']}" %>
-:db_connection_options:
-  :adapter: 'mysql2'
-  :user: <%= ENV['GEMSTASH_DB_USERNAME'] %>
-  :password: <%= ENV['GEMSTASH_DB_PASSWORD'] %>
-<% elsif ENV['GEMSTASH_DB_ADAPTER'] == 'postgres' %>
+<% if ENV['GEMSTASH_DB_ADAPTER'] == 'postgres' %>
 # postgres adapter
 :db_adapter: postgres
 :db_url: <%= "postgres://#{ENV['GEMSTASH_DB_HOST']}:#{ENV['GEMSTASH_DB_PORT']}/#{ENV['GEMSTASH_DB_DATABASE']}" %>

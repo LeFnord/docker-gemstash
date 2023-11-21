@@ -2,8 +2,10 @@
 version: '3'
 services:
   gemstash:
-    build: .
-    image: zappi/gemstash:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
     environment:
       RACK_ENV: production
     ports:
