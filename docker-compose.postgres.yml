@@ -2,7 +2,8 @@
 version: '2.1'
 services:
   gemstash:
-    image: zappi/gemstash:1.2.0
+    build: .
+    image: zappi/gemstash:latest
     environment:
       RACK_ENV: production
       GEMSTASH_DB_ADAPTER: postgres
@@ -19,7 +20,7 @@ services:
     links:
       - postgres
   postgres:
-    image: postgres:9.6.3-alpine
+    image: postgres:10.18-alpine
     volumes:
       - postgres_data:/var/lib/mysql
     expose:

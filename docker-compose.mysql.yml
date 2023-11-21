@@ -2,7 +2,8 @@
 version: '2.1'
 services:
   gemstash:
-    image: zappi/gemstash:1.2.0
+    build: .
+    image: zappi/gemstash:latest
     environment:
       RACK_ENV: production
       GEMSTASH_DB_ADAPTER: mysql2
@@ -22,7 +23,7 @@ services:
       mysql:
         condition: service_healthy
   mysql:
-    image: mysql:5.7.19
+    image: mysql:5.7.37
     volumes:
       - mysql_data:/var/lib/mysql
     expose:

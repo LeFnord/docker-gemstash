@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:3.1.2-alpine
 
 # Install system dependencies
 RUN apk --update add \
@@ -9,7 +9,7 @@ RUN apk --update add \
       su-exec \
       tini && \
     gem update --system && \
-    gem install bundler:1.17.2 && \
+    gem install bundler:2.3.13 && \
     rm -rf /var/cache/apk/*
 
 # Create gemstash user
@@ -24,9 +24,11 @@ WORKDIR "${GEMSTASH_HOME}/app"
 COPY "app/" "${GEMSTASH_HOME}/app"
 RUN bundle install --jobs 4 --retry 3
 
-VOLUME "${GEMSTASH_HOME}/data"
-
-EXPOSE 9292
 USER ${GEMSTASH_USER}:${GEMSTASH_USER}
+
+RUN mkdir -p "${GEMSTASH_HOME}/data"
+VOLUME "${GEMSTASH_HOME}/data"
+EXPOSE 9292
+
 ENTRYPOINT ["tini", "--"]
 CMD ["bundle", "exec", "gemstash", "start", "--no-daemonize", "--config-file=config.yml.erb"]
