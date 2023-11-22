@@ -9,7 +9,7 @@ A RubyGems.org cache and private gem server.
 ```
 $ docker run \
   --publish=9292:9292 \
-  zappi/gemstash:<VERSION>
+  lefnord/gemstash:<VERSION>
 ```
 
 ### Advanced
